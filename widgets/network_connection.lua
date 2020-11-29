@@ -2,7 +2,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 local NetworkConnectionWidget = {}
-NetworkConnectionWidget.font = "DejaVu Sans mono 11"
+NetworkConnectionWidget.font = "DejaVu Sans mono 10"
 
 local textbox = wibox.widget.textbox()
 
@@ -21,9 +21,7 @@ margin:set_widget(textbox)
 NetworkConnectionWidget.widget = margin
 
 function NetworkConnectionWidget.update()
-   local fd = io.popen("echo `hostname -I` ;echo `iwgetid -r`")
-   local status = fd:read("*all")
-   fd:close()
+   local status = eval("echo `hostname -I` ;echo `iwgetid -r`")
 
    textbox:set_markup("<span color='" .. beautiful.fg_focus .. "'>" .. status .. "</span>")
 end
@@ -34,4 +32,6 @@ NetworkConnectionWidget.timer = timer({ timeout = 5})
 NetworkConnectionWidget.timer:connect_signal("timeout", NetworkConnectionWidget.update )
 NetworkConnectionWidget.timer:start()
 
+
 return NetworkConnectionWidget
+

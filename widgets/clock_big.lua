@@ -12,7 +12,7 @@ textbox:set_align("left")
 local margin = wibox.layout.margin()
 
 margin:set_top(20)
-margin:set_bottom(-40)
+margin:set_bottom(-20)
 margin:set_left(5)
 margin:set_right(5)
 
@@ -22,9 +22,7 @@ BigClockWidget.widget = margin
 BigClockWidget.format = "%H:%M:%S"
 
 function BigClockWidget.update()
-   local fd = io.popen("date +\"" .. BigClockWidget.format .. "\"")
-   local status = fd:read("*all")
-   fd:close()
+   local status = eval("date +\"" .. BigClockWidget.format .. "\"")
 
    textbox:set_markup("<span color='" .. beautiful.fg_focus .. "'>" .. status .. "</span>")
 end

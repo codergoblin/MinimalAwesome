@@ -13,6 +13,8 @@ naughty = require("naughty")
 menubar = require("menubar")
 require("debian.menu")
 
+require("utils")
+
 -- Load error handler
 require("error_handler")
 

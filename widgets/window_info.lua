@@ -1,15 +1,23 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local awful = require("awful")
+local naughty = require("naughty")
 
 local WindowInfoWidget = {
-    focused_pid = nil
+    focused_pid = nil,
+    command_line = nil
 }
-WindowInfoWidget.font = "DejaVu Sans mono 11"
+WindowInfoWidget.font = "DejaVu Sans mono 10"
 
 local textbox = wibox.widget.textbox()
 
 textbox:set_font(WindowInfoWidget.font)
 textbox:set_align("left")
+
+textbox:buttons(awful.util.table.join(awful.button({}, 1,
+    function()
+        WindowInfoWidget.copy_full_command()
+    end)))
 
 local margin = wibox.layout.margin()
 
@@ -26,17 +34,13 @@ function WindowInfoWidget.update()
 
     if WindowInfoWidget.focused_pid then
 
-
-
         local pid = WindowInfoWidget.focused_pid
 
-        local fd = io.popen("cat /proc/" .. pid .. "/cmdline | xargs -0 echo")
-        local command = fd:read("*all")
-        fd:close()
+        WindowInfoWidget.command_line = eval("cat /proc/" .. pid .. "/cmdline | xargs -0 echo")
 
-        command = command:sub(1,30)
+        local command = ellipsis(WindowInfoWidget.command_line, 30)
 
-        local markup = "<span color='" .. beautiful.fg_focus .. "'>pid: " .. pid .. "</span><span> " .. command .. "</span>"
+        local markup = "<span color='" .. beautiful.fg_normal .. "'>pid: " .. pid .. "\n" .. command .. "</span>"
 
         textbox:set_markup(markup)
 
@@ -45,24 +49,14 @@ function WindowInfoWidget.update()
     end
 end
 
-function WindowInfoWidget.set_client(c)
-    if c.pid then
-        WindowInfoWidget.focused_pid = c.pid
-        WindowInfoWidget.update()
+function WindowInfoWidget.copy_full_command()
+    if WindowInfoWidget.command_line then
+        naughty.notify({ text = WindowInfoWidget.command_line })
     end
 end
 
-WindowInfoWidget.update()
 
-client.connect_signal("manage", function(c, startup)
-    c:connect_signal("mouse::enter",
-        function(c)
-            if c.pid then
-                WindowInfoWidget.focused_pid = c.pid
-                WindowInfoWidget.update()
-            end
-        end)
-end)
+WindowInfoWidget.update()
 
 client.connect_signal("focus",
     function(c)
@@ -71,6 +65,8 @@ client.connect_signal("focus",
             WindowInfoWidget.update()
         end
     end)
+
+
 
 return WindowInfoWidget
 

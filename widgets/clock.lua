@@ -7,9 +7,7 @@ ClockWidget.widget:set_align("right")
 ClockWidget.format = "%Y-%m-%d %H:%M"
 
 function ClockWidget.update()
-   local fd = io.popen("date +\"" .. ClockWidget.format .. "\"")
-   local status = fd:read("*all")
-   fd:close()
+   local status = eval("date +\"" .. ClockWidget.format .. "\"")
 
    ClockWidget.widget:set_markup("<span color='" .. beautiful.fg_normal .. "'>" .. status .. "</span>")
 end

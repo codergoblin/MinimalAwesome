@@ -18,9 +18,7 @@ VolumeWidget.widget = layout
 
 
 function VolumeWidget.update()
-    local fd = io.popen("amixer -D pulse sget Master | egrep -o \"[0-9]+%\" | head -1")
-    local status = fd:read("*all")
-    fd:close()
+    local status = eval("amixer -D pulse sget Master | egrep -o \"[0-9]+%\" | head -1")
 
     textbox:set_markup(
         " <span color='" .. beautiful.fg_focus ..
