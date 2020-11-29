@@ -81,12 +81,6 @@ local function render_widget_box(s)
         layout  = wibox.layout.align.horizontal
     }
     layout.expand = 'outside'
-    --Now bring it all together (with the tasklist in the middle)
-    --local layout = wibox.layout.align.horizontal()
-
-    --layout:set_left(left_layout)
-    --layout:set_right(right_layout)
-    --layout:set_middle(center_layout)
 
     local margin = wibox.layout.margin()
 

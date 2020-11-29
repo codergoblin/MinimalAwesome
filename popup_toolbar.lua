@@ -72,7 +72,7 @@ local function render_popup_box(s)
 
 
     local widgets = {}
-    for i,widget in ipairs(settings.popup_bar.widgets) do
+    for i,widget in ipairs(settings.popup_bar.widgets_top) do
         if widgets[widget] == nil then
             widgets[widget] = require(widget)
         end
@@ -83,7 +83,14 @@ local function render_popup_box(s)
     middle_layout:add(mytasklist[s])
 
     local bottom_layout = wibox.layout.fixed.vertical()
-    middle_layout:add(require("widgets.network_connection").widget)
+
+
+    for i,widget in ipairs(settings.popup_bar.widgets_bottom) do
+        if widgets[widget] == nil then
+            widgets[widget] = require(widget)
+        end
+        bottom_layout:add(widgets[widget].widget)
+    end
 
     local layout = wibox.layout.align.vertical()
     layout:set_top(top_layout)

@@ -1,4 +1,4 @@
--- Global linraries
+-- Global libraries
 gears = require("gears")
 awful = require("awful")
 awful.rules = require("awful.rules")

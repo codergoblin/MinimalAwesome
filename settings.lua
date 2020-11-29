@@ -15,11 +15,12 @@ return {
                 { "screen management", "arandr" },
                 { "themes", "lxappearance" },
                 { "sound", "alsamixergui" },
-                { "wine",
+                {
+                    "wine",
                     {
-                        {"desktop", "wine explorer /desktop=foo,800x600" },
-                        {"config", "winecfg" },
-                        {"tricks", "winetricks" },
+                        { "desktop", "wine explorer /desktop=foo,800x600" },
+                        { "config", "winecfg" },
+                        { "tricks", "winetricks" },
                     }
                 },
                 { "restart", awesome.restart },
@@ -58,9 +59,14 @@ return {
         tasklist = {
             item_height = 50
         },
-        widgets = {
+        widgets_top = {
             "widgets.clock_big",
             "widgets.calendar"
+        },
+        widgets_bottom = {
+            "widgets.network_connection",
+            "widgets.window_info",
+            "widgets.separator",
         }
     },
     terminal = "x-terminal-emulator",

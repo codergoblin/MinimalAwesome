@@ -1,10 +1,9 @@
-
 -- Signal function to execute when a new client appears.
-client.connect_signal("manage", function (c, startup)
+client.connect_signal("manage", function(c, startup)
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-            and awful.client.focus.filter(c) then
+                and awful.client.focus.filter(c) then
             client.focus = c
         end
     end)
@@ -24,18 +23,16 @@ client.connect_signal("manage", function (c, startup)
     local titlebars_enabled = false
     if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
         -- buttons for the titlebar
-        local buttons = awful.util.table.join(
-                awful.button({ }, 1, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.move(c)
-                end),
-                awful.button({ }, 3, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.resize(c)
-                end)
-                )
+        local buttons = awful.util.table.join(awful.button({}, 1, function()
+            client.focus = c
+            c:raise()
+            awful.mouse.client.move(c)
+        end),
+            awful.button({}, 3, function()
+                client.focus = c
+                c:raise()
+                awful.mouse.client.resize(c)
+            end))
 
         -- Widgets that are aligned to the left
         local left_layout = wibox.layout.fixed.horizontal()
@@ -68,8 +65,10 @@ client.connect_signal("manage", function (c, startup)
 end)
 
 client.connect_signal("focus",
-    function(c) 
-        c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", 
-    function(c) 
-        c.border_color = beautiful.border_normal end)
+    function(c)
+        c.border_color = beautiful.border_focus
+    end)
+client.connect_signal("unfocus",
+    function(c)
+        c.border_color = beautiful.border_normal
+    end)
