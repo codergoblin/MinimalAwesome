@@ -1,8 +1,3 @@
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-local awful = require("awful")
-local naughty = require("naughty")
-
 local WindowInfoWidget = {
     focused_pid = nil,
     command_line = nil

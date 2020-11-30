@@ -1,6 +1,3 @@
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-
 local layout =  wibox.layout.fixed.horizontal()
 local textbox = wibox.widget.textbox()
 

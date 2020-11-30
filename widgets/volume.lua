@@ -1,7 +1,3 @@
-local wibox = require("wibox")
-local awful = require("awful")
-local beautiful = require("beautiful")
-
 local VolumeWidget = {}
 
 local layout =  wibox.layout.fixed.horizontal()

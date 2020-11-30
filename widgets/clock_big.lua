@@ -1,6 +1,3 @@
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-
 local BigClockWidget = {}
 BigClockWidget.font = "DejaVu Sans Light 32"
 

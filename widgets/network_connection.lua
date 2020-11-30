@@ -1,6 +1,3 @@
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-
 local NetworkConnectionWidget = {}
 NetworkConnectionWidget.font = "DejaVu Sans mono 10"
 

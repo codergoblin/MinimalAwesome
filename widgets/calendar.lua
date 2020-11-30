@@ -1,6 +1,3 @@
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-local awful = require("awful")
 
 local CalendarWidget = {}
 CalendarWidget.month = tonumber(io.popen("date +'%m'"):read("*all"))

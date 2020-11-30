@@ -1,6 +1,3 @@
-local awful = require("awful")
-local beautiful = require("beautiful")
-
 local MenuWidget = {}
 MenuWidget.menu = awful.menu({ items = require("settings").menu })
 

@@ -1,6 +1,3 @@
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-
 local ClockWidget = {}
 ClockWidget.widget = wibox.widget.textbox()
 ClockWidget.widget:set_align("right")

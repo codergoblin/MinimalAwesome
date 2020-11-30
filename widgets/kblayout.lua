@@ -1,8 +1,4 @@
 -- Keyboard map indicator and changer
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-local awful = require("awful")
-
 local KeyboardLayoutWidget = {}
 KeyboardLayoutWidget.cmd = "setxkbmap"
 KeyboardLayoutWidget.layout = settings.keyboard_layouts
