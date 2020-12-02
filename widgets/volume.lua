@@ -23,7 +23,7 @@ function VolumeWidget.update()
 end
 
 function VolumeWidget.onclick()
-    awful.util.spawn("alsamixergui")
+    awful.util.spawn("pavucontrol-qt")
 end
 
 VolumeWidget.widget:buttons(awful.util.table.join(awful.button({}, 1, function()
