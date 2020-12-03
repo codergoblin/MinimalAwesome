@@ -18,12 +18,14 @@
 </h1>
 
 <pre>
+sudo apt-get install awesome i3lock terminator shutter
 cd ~/.config
 git clone https://github.com/codergoblin/Awesome-rc.lua.git awesome
 </pre>
 
 For configuration and dependancies see <a href="https://github.com/codergoblin/Awesome-rc.lua/blob/master/settings.lua">settings.lua</a>. Also have a look at <a href="https://github.com/ThePinkPanther/MinimalAwesome/blob/master/keybindings.lua">keybindings.lua</a> for keyboard shortcuts, and <a href="https://github.com/ThePinkPanther/MinimalAwesome/blob/master/theme/theme.lua">theme/theme.lua</a> for styling.
 
+Don't forget to remove the "widgets.battery" widget from the settings.lua load order if your pc is not a laptop.
 
 
 <hr/>
