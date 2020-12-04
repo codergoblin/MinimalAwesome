@@ -18,7 +18,7 @@
 </h1>
 
 <pre>
-sudo apt-get install awesome i3lock terminator shutter
+sudo apt-get install awesome i3lock terminator shutter pavucontrol-qt
 cd ~/.config
 git clone https://github.com/codergoblin/Awesome-rc.lua.git awesome
 </pre>
