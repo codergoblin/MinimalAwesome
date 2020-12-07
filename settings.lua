@@ -4,7 +4,7 @@ return {
         volumeUp = "amixer -D pulse sset Master 10%+",
         volumeDown = "amixer -D pulse sset Master 10%-",
         volumeMute = "amixer set Master toggle",
-        screenshot = "shutter -s -e -o=\"~/Pictures/Screenshot `date +\"%Y-%m-%d %H:%M\"`.png\""
+        screenshot = "PIC=\"$HOME/Pictures/Screenshot_`date +\"%Y-%m-%d %H:%M\"`.png\" ; shutter -s -e -o=$PIC && copyq write image/png - < $PIC && copyq select 0"
     },
     menu = {
         {
@@ -15,6 +15,7 @@ return {
                 { "screen management", "arandr" },
                 { "themes", "lxappearance" },
                 { "sound", "alsamixergui" },
+                { "default apps", "exo-preferred-applications" },
                 {
                     "wine",
                     {
@@ -48,7 +49,7 @@ return {
             "widgets.separator",
             "widgets.kblayout",
             "widgets.separator",
-            "widgets.battery",
+ --           "widgets.battery",
             "widgets.separator",
             "widgets.volume"
         }
